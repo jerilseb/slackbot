@@ -1,6 +1,7 @@
 const slackClient = require('../server/slackClient');
 const http = require('http');
 const config = require('../../config');
+const log = config.log();
 const service = require('../server/service')(config);
 const server = http.createServer(service);
 const witClient = require('../server/witClient')(config.witToken);
@@ -12,5 +13,5 @@ rtm.start();
 slackClient.addAuthenticatedHandler(rtm, () => server.listen(3000));
 
 server.on('listening', () => {
-    console.log(`App is listening on ${server.address().port} in ${service.get('env')} mode.`);
+    log.info(`App is listening on ${server.address().port} in ${service.get('env')} mode.`);
 });
