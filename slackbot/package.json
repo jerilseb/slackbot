@@ -1,5 +1,5 @@
 {
-  "name": "iris",
+  "name": "slackbot",
   "version": "1.0.0",
   "description": "",
   "main": "server/service.js",

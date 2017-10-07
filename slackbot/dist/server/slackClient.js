@@ -1,8 +1,7 @@
-'use strict';
-
 const RtmClient = require('@slack/client').RtmClient;
 const CLIENT_EVENTS = require('@slack/client').CLIENT_EVENTS;
 const RTM_EVENTS = require('@slack/client').RTM_EVENTS;
+
 let rtm = null;
 let nlp = null;
 let registry = null;
@@ -12,7 +11,6 @@ function handleOnAuthenticated(rtmStartData) {
 }
 
 function handleOnMessage(message) {
-
     if (message.text.toLowerCase().includes('iris')) {
         nlp.ask(message.text, (err, res) => {
             if (err) {
@@ -22,12 +20,12 @@ function handleOnMessage(message) {
 
             try {
                 if (!res.intent || !res.intent[0] || !res.intent[0].value) {
-                    throw new Error("Could not extract intent.");
+                    throw new Error('Could not extract intent.');
                 }
 
-                const intent = require('./intents/' + res.intent[0].value.trim() + 'Intent');
+                const intent = require(`./intents/${res.intent[0].value.trim()}Intent`);
 
-                intent.process(res, registry, function (error, response) {
+                intent.process(res, registry, (error, response) => {
                     if (error) {
                         console.log(error.message);
                         return;
@@ -35,8 +33,8 @@ function handleOnMessage(message) {
 
                     return rtm.sendMessage(response, message.channel);
                 });
-            } catch (err) {
-                console.log(err);
+            } catch (_err) {
+                console.log(_err);
                 console.log(res);
                 rtm.sendMessage("Sorry, I don't know what you are talking about!", message.channel);
             }
@@ -44,12 +42,12 @@ function handleOnMessage(message) {
     }
 }
 
-function addAuthenticatedHandler(rtm, handler) {
-    rtm.on(CLIENT_EVENTS.RTM.AUTHENTICATED, handler);
+function addAuthenticatedHandler(_rtm, handler) {
+    _rtm.on(CLIENT_EVENTS.RTM.AUTHENTICATED, handler);
 }
 
 module.exports.init = function slackClient(token, logLevel, nlpClient, serviceRegistry) {
-    rtm = new RtmClient(token, { logLevel: logLevel });
+    rtm = new RtmClient(token, { logLevel });
     nlp = nlpClient;
     registry = serviceRegistry;
     addAuthenticatedHandler(rtm, handleOnAuthenticated);

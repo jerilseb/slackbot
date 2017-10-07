@@ -1,4 +1,3 @@
-require('dotenv').config();
 const bunyan = require('bunyan');
 
 const log = {
@@ -14,8 +13,8 @@ const log = {
 };
 
 module.exports = {
-    witToken: process.env.WIT_TOKEN,
-    slackToken: process.env.SLACK_TOKEN,
+    witToken: process.env.WIT_API_KEY,
+    slackToken: process.env.SLACK_API_KEY,
     slackLogLevel: 'verbose',
     serviceTimeout: 30,
     log: (env) => {
