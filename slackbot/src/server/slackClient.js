@@ -21,22 +21,22 @@ function handleOnMessage(message) {
             }
 
             try {
-                if(!res.intent || !res.intent[0] || !res.intent[0].value) {
+                if (!res.intent || !res.intent[0] || !res.intent[0].value) {
                     throw new Error("Could not extract intent.")
                 }
 
                 const intent = require('./intents/' + res.intent[0].value.trim() + 'Intent');
 
-                intent.process(res, registry, function(error, response) {
-                    if(error) {
+                intent.process(res, registry, function (error, response) {
+                    if (error) {
                         console.log(error.message);
                         return;
                     }
-                    
+
                     return rtm.sendMessage(response, message.channel);
                 })
 
-            } catch(err) {
+            } catch (err) {
                 console.log(err);
                 console.log(res);
                 rtm.sendMessage("Sorry, I don't know what you are talking about!", message.channel);
