@@ -4,7 +4,10 @@
   "description": "",
   "main": "server/service.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src/ -d dist/",
+    "prestart": "npm run build",
+    "start": "node dist/bin/run.js"
   },
   "author": "",
   "license": "ISC",
@@ -12,5 +15,9 @@
     "@slack/client": "^3.14.0",
     "express": "^4.16.1",
     "superagent": "^3.6.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1"
   }
 }

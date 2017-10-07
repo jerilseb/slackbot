@@ -4,8 +4,10 @@
   "description": "",
   "main": "server/service.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src/ -d dist/",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prestart": "npm run build",
+    "start": "node dist/bin/run.js"
   },
   "author": "",
   "license": "ISC",
