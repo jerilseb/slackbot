@@ -1,0 +1,10 @@
+{
+    "parserOptions": {
+        "ecmaVersion": 6
+    },
+    "rules": {
+        "semi": ["error", "always"],
+        "no-unused-vars": "warn",
+        "indent": ["error", 4]
+    }
+}

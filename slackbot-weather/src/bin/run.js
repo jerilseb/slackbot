@@ -10,7 +10,7 @@ server.on('listening', function() {
     console.log(`Slackbot-Weather is listening on ${server.address().port} in ${service.get('env')} mode.`);
 
     const announce = () => {
-        request.get(`http://127.0.0.1:3000/service/weather/${server.address().port}`, (err, res) => {
+        request.get(`http://127.0.0.1:3000/service/weather/${server.address().port}`, (err) => {
             if(err) {
                 console.log(err);
                 console.log("Error connecting to Iris"); 
