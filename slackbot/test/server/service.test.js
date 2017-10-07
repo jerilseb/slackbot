@@ -1,6 +1,7 @@
 const should = require('should');
 const request = require('supertest');
-const service = require('../../dist/server/service');
+const config = require('../../config');
+const service = require('../../dist/server/service')(config);
 
 describe('The express service', () => {
     describe('PUT /foo', () => {
@@ -11,7 +12,7 @@ describe('The express service', () => {
         });
     });
 
-    describe('PUT /service/:intent/:port', () => {
+    describe('GET /service/:intent/:port', () => {
         it('should return HTTP 200', (done) => {
             request(service)
                 .get('/service/test/9999')

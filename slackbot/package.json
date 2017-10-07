@@ -4,6 +4,7 @@
   "description": "",
   "main": "server/service.js",
   "scripts": {
+    "pretest": "npm run build",
     "test": "nyc mocha --recursive test",
     "build": "babel src/ -d dist/",
     "prestart": "npm run build",
