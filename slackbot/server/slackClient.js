@@ -25,7 +25,7 @@ function handleOnMessage(message) {
                     throw new Error("Could not extract intent.")
                 }
 
-                const intent = require('./intents/' + res.intent[0].value + 'Intent');
+                const intent = require('./intents/' + res.intent[0].value.trim() + 'Intent');
 
                 intent.process(res, registry, function(error, response) {
                     if(error) {
