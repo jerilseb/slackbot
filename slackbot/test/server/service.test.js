@@ -1,7 +1,6 @@
 const should = require('should');
 const request = require('supertest');
-const service = require('../../src/server/service');
-
+const service = require('../../dist/server/service');
 
 describe('The express service', () => {
     describe('PUT /foo', () => {

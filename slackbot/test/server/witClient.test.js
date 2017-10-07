@@ -1,7 +1,7 @@
 'use strict';
 
 require('should');
-const WitClient = require('../../src/server/witClient');
+const WitClient = require('../../dist/server/witClient');
 
 describe('The WIT client', () => {
     describe('ask', () => {
