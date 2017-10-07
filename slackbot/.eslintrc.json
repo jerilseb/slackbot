@@ -1,12 +1,7 @@
 {
-    "extends": "airbnb-base",
     "rules": {
         "semi": ["error", "always"],
         "no-unused-vars": "warn",
-        "import/extensions": "off",
-        "import/no-unresolved": "off",
-        "no-console": "off",
-        "linebreak-style": "off",
         "indent": ["error", 4]
     }
 }
