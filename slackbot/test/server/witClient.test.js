@@ -1,5 +1,3 @@
-'use strict';
-
 require('should');
 const WitClient = require('../../dist/server/witClient');
 

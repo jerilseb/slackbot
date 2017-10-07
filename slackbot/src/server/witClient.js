@@ -1,5 +1,3 @@
-
-
 const request = require('superagent');
 
 function handleWitResponse(res) {
