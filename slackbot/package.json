@@ -4,7 +4,7 @@
   "description": "",
   "main": "server/service.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "nyc mocha --recursive test",
     "build": "babel src/ -d dist/",
     "prestart": "npm run build",
     "start": "node dist/bin/run.js"
@@ -21,6 +21,10 @@
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "eslint": "^4.8.0",
     "eslint-config-airbnb-base": "^12.0.2",
-    "eslint-plugin-import": "^2.7.0"
+    "eslint-plugin-import": "^2.7.0",
+    "mocha": "^4.0.1",
+    "nyc": "^11.2.1",
+    "should": "^13.1.1",
+    "supertest": "^3.0.0"
   }
 }
